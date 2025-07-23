@@ -128,7 +128,7 @@ export default function Portfolio() {
           <AnimatedSection>
             <FloatingElement delay={200}>
               <Image
-                src="me-02-16_12-49-21.jpg"
+                src="me.jpg"
                 alt="Muhammed AL-Lami"
                 width={150}
                 height={150}
@@ -250,7 +250,7 @@ export default function Portfolio() {
                   }
                 >
                   <Image
-                    src="/placeholder.svg?height=400&width=400"
+                    src="cv.png?height=400&width=400"
                     alt="Developer workspace"
                     width={400}
                     height={400}
