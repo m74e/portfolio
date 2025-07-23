@@ -162,7 +162,7 @@ export default function Portfolio() {
                 technologies.
               </p>
               <div
-                className="flex justify-center space-x-4 animate-fade-in-up"
+                className="flex justify-center gap-10 animate-fade-in-up"
                 style={{ animationDelay: "1000ms" }}
               >
                 <Button
@@ -188,7 +188,7 @@ export default function Portfolio() {
             </div>
           </AnimatedSection>
 
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="flex item-center justify-center transform -translate-x-1/2 animate-bounce pt-3">
             <ArrowDown className="h-6 w-6 text-muted-foreground" />
           </div>
         </div>
