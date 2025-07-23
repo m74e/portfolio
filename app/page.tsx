@@ -31,6 +31,7 @@ export default function Portfolio() {
     "TypeScript",
     "JavaScript",
     "ReactNative",
+    "expo",
     "Zustand",
     "Tailwind CSS",
     "Shadcn",
@@ -48,7 +49,7 @@ export default function Portfolio() {
       title: "Dhaman for projects-منصة ضمان الرقمية للمشاريع",
       description:
         "Dhaman – the Digital Assurance Platform for Iraqi Projects – is a comprehensive solution that connects government entities and private companies to manage a project’s full lifecycle: registration, validation, approvals, status updates, and final reporting. It’s built on a scalable architecture with modern, user-friendly interfaces, role-based permissions, and automated workflows that minimize errors and speed up delivery. Dhaman emphasizes transparency, security, and accessibility, serving as a single source of truth for project data and documentation in Iraq.",
-      tech: ["Next.js", "TypeScript", "Tailwind CSS","scss"],
+      tech: ["Next.js", "TypeScript", "Tailwind CSS", "scss"],
       image: "dhamanProjects.png?height=200&width=300",
       github: "#",
       live: "https://project.rss.gov.iq/",
@@ -57,7 +58,7 @@ export default function Portfolio() {
       title: "Dhaman for Control Panel-منصة ضمان الرقمية واجهة التحكم",
       description:
         "Dhaman Control Panel: the central command hub for permissions, workflow oversight, and real‑time insights.",
-      tech: ["Nextjs","TypeScript","Tailwind" , ],
+      tech: ["Nextjs", "TypeScript", "Tailwind"],
       image: "/placeholder.svg?height=200&width=300",
       github: "#",
       live: "#",
@@ -157,7 +158,7 @@ export default function Portfolio() {
                 style={{ animationDelay: "800ms" }}
               >
                 Passionate about creating beautiful, fast, and user-friendly web
-                experiences. Specialized in React, Next.js, and modern web
+                experiences. Specialized in React.js, Next.js, and modern web
                 technologies.
               </p>
               <div
@@ -214,7 +215,7 @@ export default function Portfolio() {
                   excellent user experiences.
                 </p>
                 <p className="text-lg leading-relaxed">
-                  With a strong foundation in React, Next.js, and TypeScript, I
+                  With a strong foundation in React.js, Next.js, and TypeScript, I
                   focus on building fast, scalable, and maintainable
                   applications. I'm always eager to learn new technologies and
                   stay up-to-date with the latest industry trends.
@@ -243,13 +244,19 @@ export default function Portfolio() {
             <AnimatedSection delay={400}>
               <div className="relative group">
                 <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-                <Image
-                  src="/placeholder.svg?height=400&width=400"
-                  alt="Developer workspace"
-                  width={400}
-                  height={400}
-                  className="relative rounded-xl shadow-2xl group-hover:scale-105 transition-all duration-500"
-                />
+                <Link
+                  href={
+                    "https://docs.google.com/document/d/1TgoWCXOiG8pYWL5jhwqWTQdQ5OPV8vk9eXtDZe_dINg/edit?usp=sharing"
+                  }
+                >
+                  <Image
+                    src="/placeholder.svg?height=400&width=400"
+                    alt="Developer workspace"
+                    width={400}
+                    height={400}
+                    className="relative rounded-xl shadow-2xl group-hover:scale-105 transition-all duration-500"
+                  />
+                </Link>
               </div>
             </AnimatedSection>
           </div>
