@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Muhammed AL-Lami - Front-End Developer",
   description:
     "Portfolio of Muhammed AL-Lami, a passionate front-end developer specializing in React, Next.js, and modern web technologies.",
-    generator: 'v0.dev'
+    // generator: 'v0.dev'
 }
 
 export default function RootLayout({

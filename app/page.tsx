@@ -23,56 +23,9 @@ import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { AnimatedSection } from "@/components/animated-section";
 import { FloatingElement } from "@/components/floating-element";
+import { projects, skills } from "@/lib/utils";
 
 export default function Portfolio() {
-  const skills = [
-    "React.js",
-    "Next.js",
-    "TypeScript",
-    "JavaScript",
-    "ReactNative",
-    "expo",
-    "Zustand",
-    "Tailwind CSS",
-    "Shadcn",
-    "HTML5",
-    "CSS3",
-    // "Node.js",
-    "Git",
-    // "Figma",
-    "Responsive Design",
-    "Performance Optimization",
-  ];
-
-  const projects = [
-    {
-      title: "Dhaman for projects-منصة ضمان الرقمية للمشاريع",
-      description:
-        "Dhaman – the Digital Assurance Platform for Iraqi Projects – is a comprehensive solution that connects government entities and private companies to manage a project’s full lifecycle: registration, validation, approvals, status updates, and final reporting. It’s built on a scalable architecture with modern, user-friendly interfaces, role-based permissions, and automated workflows that minimize errors and speed up delivery. Dhaman emphasizes transparency, security, and accessibility, serving as a single source of truth for project data and documentation in Iraq.",
-      tech: ["Next.js", "TypeScript", "Tailwind CSS", "scss"],
-      image: "dhamanProjects.png?height=200&width=300",
-      github: "#",
-      live: "https://project.rss.gov.iq/",
-    },
-    {
-      title: "Dhaman for Control Panel-منصة ضمان الرقمية واجهة التحكم",
-      description:
-        "Dhaman Control Panel: the central command hub for permissions, workflow oversight, and real‑time insights.",
-      tech: ["Nextjs", "TypeScript", "Tailwind"],
-      image: "/placeholder.svg?height=200&width=300",
-      github: "#",
-      live: "#",
-    },
-    {
-      title: "Dhaman for user-منصة ضمان الرقمية الاختياري",
-      description:
-        "The Dhaman User Portal is the primary touchpoint for beneficiaries to interact with services: initiating and updating requests, uploading documents, monitoring status at every stage, and receiving direct alerts or feedback. It’s built with a responsive, intuitive UI that follows modern accessibility and usability standards. Multilingual support and an interactive help center reduce errors and boost user satisfaction.",
-      tech: ["React.js", "TypeScript", "Tailwind CSS"],
-      image: "dhamanUser.png?height=200&width=300",
-      github: "#",
-      live: "https://www.user.rss.gov.iq/",
-    },
-  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -215,8 +168,8 @@ export default function Portfolio() {
                   excellent user experiences.
                 </p>
                 <p className="text-lg leading-relaxed">
-                  With a strong foundation in React.js, Next.js, and TypeScript, I
-                  focus on building fast, scalable, and maintainable
+                  With a strong foundation in React.js, Next.js, and TypeScript,
+                  I focus on building fast, scalable, and maintainable
                   applications. I'm always eager to learn new technologies and
                   stay up-to-date with the latest industry trends.
                 </p>
@@ -382,13 +335,13 @@ export default function Portfolio() {
                 asChild
                 className="group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
-                <Link
+                {/* <Link
                   href="https://mail.google.com/mail/u/0/#inbox"
                   target="_blank"
                 >
                   <Mail className="mr-2 h-5 w-5 group-hover:animate-bounce" />
                   Email Me
-                </Link>
+                </Link> */}
               </Button>
               <Button
                 size="lg"
