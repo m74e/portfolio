@@ -198,7 +198,7 @@ export default function Portfolio() {
                 <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
                 <Link
                   href={
-                    "https://docs.google.com/document/d/1TgoWCXOiG8pYWL5jhwqWTQdQ5OPV8vk9eXtDZe_dINg/edit?usp=sharing"
+                    "https://docs.google.com/document/d/1G7g3EfPoMCiMaPQdaw3UefzzM8Oscb7EnlUkwh-LchM/edit?tab=t.0"
                   }
                 >
                   <Image
