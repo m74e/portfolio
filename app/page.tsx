@@ -13,20 +13,48 @@ import {
   Mail,
   ExternalLink,
   Code,
-  Palette,
   Smartphone,
   Globe,
   ArrowDown,
+  type LucideIcon,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { AnimatedSection } from "@/components/animated-section";
 import { FloatingElement } from "@/components/floating-element";
-import { projects, skills } from "@/lib/utils";
+import { cn, projects, skills } from "@/lib/utils";
+
+const NAV_LINKS = [
+  { href: "#about", label: "About" },
+  { href: "#skills", label: "Skills" },
+  { href: "#projects", label: "Projects" },
+  { href: "#contact", label: "Contact" },
+] as const;
+
+const ABOUT_HIGHLIGHTS: { icon: LucideIcon; text: string }[] = [
+  { icon: Code, text: "Clean Code" },
+  { icon: Smartphone, text: "Responsive Design" },
+  { icon: Globe, text: "Web Performance" },
+];
+
+const CV_URL =
+  "https://docs.google.com/document/d/1G7g3EfPoMCiMaPQdaw3UefzzM8Oscb7EnlUkwh-LchM/edit?tab=t.0";
+
+const LINK_STYLE =
+  "hover:text-primary transition-all duration-300 hover:scale-105";
+const SECTION_TITLE_STYLE =
+  "text-3xl font-bold text-center mb-12 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent";
+const BUTTON_PRIMARY_STYLE =
+  "group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl";
+const BUTTON_OUTLINE_STYLE =
+  "group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl bg-transparent";
+
+function SectionTitle({ children }: { children: React.ReactNode }) {
+  return <h2 className={SECTION_TITLE_STYLE}>{children}</h2>;
+}
 
 export default function Portfolio() {
-
   return (
     <div className="min-h-screen bg-background">
       <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-md border-b z-50 supports-[backdrop-filter]:bg-background/60">
@@ -37,30 +65,11 @@ export default function Portfolio() {
             </div>
             <div className="flex items-center space-x-4">
               <div className="hidden md:flex space-x-6">
-                <Link
-                  href="#about"
-                  className="hover:text-primary transition-all duration-300 hover:scale-105"
-                >
-                  About
-                </Link>
-                <Link
-                  href="#skills"
-                  className="hover:text-primary transition-all duration-300 hover:scale-105"
-                >
-                  Skills
-                </Link>
-                <Link
-                  href="#projects"
-                  className="hover:text-primary transition-all duration-300 hover:scale-105"
-                >
-                  Projects
-                </Link>
-                <Link
-                  href="#contact"
-                  className="hover:text-primary transition-all duration-300 hover:scale-105"
-                >
-                  Contact
-                </Link>
+                {NAV_LINKS.map(({ href, label }) => (
+                  <Link key={href} href={href} className={LINK_STYLE}>
+                    {label}
+                  </Link>
+                ))}
               </div>
               <ThemeToggle />
             </div>
@@ -117,20 +126,13 @@ export default function Portfolio() {
                 className="flex justify-center gap-10 animate-fade-in-up"
                 style={{ animationDelay: "1000ms" }}
               >
-                <Button
-                  asChild
-                  className="group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
-                >
+                <Button asChild className={BUTTON_PRIMARY_STYLE}>
                   <Link href="#contact">
                     <Mail className="mr-2 h-4 w-4 group-hover:animate-bounce" />
                     Get In Touch
                   </Link>
                 </Button>
-                <Button
-                  variant="outline"
-                  asChild
-                  className="group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl bg-transparent"
-                >
+                <Button variant="outline" asChild className={BUTTON_OUTLINE_STYLE}>
                   <Link href="#projects">
                     <Code className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
                     View Projects
@@ -140,7 +142,7 @@ export default function Portfolio() {
             </div>
           </AnimatedSection>
 
-          <div className="flex item-center justify-center transform -translate-x-1/2 animate-bounce pt-3">
+          <div className="flex items-center justify-center transform -translate-x-1/2 animate-bounce pt-3">
             <ArrowDown className="h-6 w-6 text-muted-foreground" />
           </div>
         </div>
@@ -152,9 +154,7 @@ export default function Portfolio() {
       >
         <div className="container mx-auto">
           <AnimatedSection>
-            <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
-              About Me
-            </h2>
+            <SectionTitle>About Me</SectionTitle>
           </AnimatedSection>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -173,20 +173,15 @@ export default function Portfolio() {
                   stay up-to-date with the latest industry trends.
                 </p>
                 <div className="grid grid-cols-2 gap-4 mt-8">
-                  {[
-                    { icon: Code, text: "Clean Code" },
-                    // { icon: Palette, text: "UI/UX Design" },
-                    { icon: Smartphone, text: "Responsive Design" },
-                    { icon: Globe, text: "Web Performance" },
-                  ].map((item, index) => (
+                  {ABOUT_HIGHLIGHTS.map(({ icon: Icon, text }) => (
                     <div
-                      key={index}
+                      key={text}
                       className="flex items-center group hover:scale-105 transition-all duration-300"
                     >
                       <div className="mr-3 p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                        <item.icon className="h-5 w-5 text-primary" />
+                        <Icon className="h-5 w-5 text-primary" />
                       </div>
-                      <span className="font-medium">{item.text}</span>
+                      <span className="font-medium">{text}</span>
                     </div>
                   ))}
                 </div>
@@ -197,11 +192,7 @@ export default function Portfolio() {
             <AnimatedSection delay={400}>
               <div className="relative group">
                 <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-                <Link
-                  href={
-                    "https://docs.google.com/document/d/1G7g3EfPoMCiMaPQdaw3UefzzM8Oscb7EnlUkwh-LchM/edit?tab=t.0"
-                  }
-                >
+                <Link href={CV_URL}>
                   <Image
                     src="cv.png?height=400&width=400"
                     alt="Developer workspace"
@@ -219,9 +210,7 @@ export default function Portfolio() {
       <section id="skills" className="py-16 px-4">
         <div className="container mx-auto">
           <AnimatedSection>
-            <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
-              Skills & Technologies
-            </h2>
+            <SectionTitle>Skills & Technologies</SectionTitle>
           </AnimatedSection>
 
           <AnimatedSection delay={200}>
@@ -247,9 +236,7 @@ export default function Portfolio() {
       >
         <div className="container mx-auto">
           <AnimatedSection>
-            <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
-              Featured Projects
-            </h2>
+            <SectionTitle>Featured Projects</SectionTitle>
           </AnimatedSection>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -319,9 +306,7 @@ export default function Portfolio() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10 -z-10"></div>
         <div className="container mx-auto text-center">
           <AnimatedSection>
-            <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
-              Let's Work Together
-            </h2>
+            <SectionTitle>Let's Work Together</SectionTitle>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
               I'm always interested in new opportunities and exciting projects.
               Let's discuss how we can bring your ideas to life.
@@ -330,25 +315,7 @@ export default function Portfolio() {
 
           <AnimatedSection delay={300}>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button
-                size="lg"
-                asChild
-                className="group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
-              >
-                {/* <Link
-                  href="https://mail.google.com/mail/u/0/#inbox"
-                  target="_blank"
-                >
-                  <Mail className="mr-2 h-5 w-5 group-hover:animate-bounce" />
-                  Email Me
-                </Link> */}
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                asChild
-                className="group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl bg-transparent"
-              >
+              <Button size="lg" variant="outline" asChild className={BUTTON_OUTLINE_STYLE}>
                 <Link
                   href="https://www.linkedin.com/in/muhammed-al-lami-09a6b6343/"
                   target="_blank"
@@ -357,12 +324,7 @@ export default function Portfolio() {
                   LinkedIn
                 </Link>
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                asChild
-                className="group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl bg-transparent"
-              >
+              <Button size="lg" variant="outline" asChild className={BUTTON_OUTLINE_STYLE}>
                 <Link href="https://github.com/m74e" target="_blank">
                   <Github className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
                   GitHub
