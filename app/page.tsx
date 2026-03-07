@@ -191,6 +191,7 @@ export default function Portfolio() {
                   ))}
                 </div>
               </div>
+              
             </AnimatedSection>
 
             <AnimatedSection delay={400}>
